@@ -1,0 +1,176 @@
+.detail {
+    position: relative;
+    padding-top: 0.8rem;
+    padding-bottom: 1rem;
+}
+
+.detail nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 0.8rem;
+    background-color: orange;
+    line-height: 0.8rem;
+    text-align: center;
+    z-index: 999;
+    color: white;
+}
+
+.detail nav div {
+    float: left;
+    margin-left: 0.2rem;
+}
+
+.detail .img {
+    width: 100vw;
+    height: 5rem;
+}
+
+.detail .imgbox {
+    width: 100vw;
+    height: 2rem;
+    padding-bottom: 5rem;
+}
+
+.detail .des {
+    box-sizing: border-box;
+    padding-left: 0.2rem;
+    position: absolute;
+    top: 5.8rem;
+    height: 3rem;
+    width: 100vw;
+}
+
+.detail .des .name {
+    height: 1rem;
+    line-height: 1rem;
+    font-size: .35rem;
+}
+
+.detail .des .hot {
+    margin-bottom: 0.2rem;
+}
+
+.detail .des .hot i {
+    font-style: normal;
+    color: red;
+}
+
+.detail .des del {
+    color: #a39f9f;
+}
+
+.detail .des .hot em {
+    font-style: normal;
+    padding: 0.1rem;
+    margin: 0 0.1rem;
+    border: 0.03rem solid orange;
+    border-radius: .06rem;
+    color: orange;
+}
+
+.detail .des span {
+    height: 1rem;
+    padding-right: 0.2rem;
+    padding-left: 0.2rem;
+    float: right;
+    font-size: .28rem;
+    color: orangered;
+    border-left: 0.01rem solid #cccccc;
+}
+
+.detail .like {
+    padding-top: 0.2rem;
+    width: 0.3rem;
+}
+
+.detail .footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    left: 0;
+    height: 1rem;
+    width: 100vw;
+    line-height: 1rem;
+}
+
+.detail .footer span {
+    float: right;
+    width: 2rem;
+    background-color: orange;
+    text-align: center;
+    color: white;
+    font-size: .3rem;
+}
+
+.detail .cover {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    left: 0;
+}
+
+.detail .goods {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 5rem;
+    background-color: white;
+    font-size: .2rem;
+}
+
+.detail .goods img {
+    width: 2rem;
+    border-radius: 0.2rem;
+    margin: 0.2rem;
+}
+
+.detail .goods .name {
+    position: absolute;
+    top: .5rem;
+    font-size: .3rem;
+}
+
+.detail .goods .size {
+    margin-top: 1rem;
+    margin: 0.2rem;
+    font-size: .3rem;
+}
+
+.detail .goods .pic {
+    height: 2.3rem;
+}
+
+.detail .goods .size span {
+    display: inline-block;
+    margin: 0.2rem .1rem;
+    padding: 0.1rem 0.2rem;
+    border: 0.02rem solid black;
+    border-radius: 0.1rem;
+    font-size: .2rem;
+}
+
+.detail .goods .size .car {
+    margin-top: -1rem;
+    text-align: center;
+}
+.detail .desimg{
+    margin-top: .2rem;
+    width: 100%;
+}
+.detail .goods .size .car span {
+    border: none;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    background-color: orange;
+    color: white;
+}
+
+.detail .active {
+    border-color: orange !important;
+    color: orange;
+}

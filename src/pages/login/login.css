@@ -1,0 +1,45 @@
+.login nav{
+    position: relative;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    background-color: orange;
+    text-align: center;
+    color: white;
+    font-size: 0.4rem;
+}
+.login .reg{
+    position: absolute;
+    right: 0.3rem;
+    top: 0.25rem;
+    color: white;
+    font-size: 0.35rem;
+}
+.login .form{
+    /* background-color: wheat; */
+    background-color: #fff;
+    box-sizing: border-box;
+    height: 93vh;
+    padding: 2rem 0.6rem;
+}
+.login input{
+    border:none;
+    background-color: #fff;
+}
+.login .inp{
+    font-size: .25rem;
+    padding: 0.5rem 0;
+}
+.login .pass{
+    overflow: hidden;
+}
+.login .pass span{
+    float: right;
+}
+.login button{
+    width: 84vw;
+    height: 0.8rem;
+    border: none;
+    border-radius: .2rem;
+    background-color: orange;
+    color: white;
+}

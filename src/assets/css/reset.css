@@ -1,0 +1,9 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: .4rem;
+}
+.App{
+    touch-action: none;
+}

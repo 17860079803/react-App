@@ -1,0 +1,31 @@
+  
+ .list li {
+    overflow: hidden;
+    margin: .3rem 0;
+    padding-left: .3rem;
+}
+.list li img{
+    width: 2rem;
+    margin: .1rem .3rem .1rem 0;
+    border-radius: .3rem; 
+    float: left;
+}
+.list li .right{
+   float: left;
+}
+.list li p{
+    margin-bottom: 0.3rem;
+    font-size: .3rem !important;
+}
+.list li span{
+   color: red;
+}
+.list li .btn{
+   padding: .2rem .2rem;
+   background-color: orange;
+   margin-top: 0.2rem;
+   width: 1.5rem;
+   border-radius: .3rem;
+   color: white;
+   font-size: .35rem !important;
+}
