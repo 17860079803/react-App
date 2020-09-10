@@ -4,6 +4,8 @@ import "./login.css"
 import { reqLogin } from "../../util/request"
 //引入alert弹窗
 import { successAlert } from "../../util/Alert"
+//
+import {NavLink} from "react-router-dom"
 export default class login extends Component {
     constructor() {
         super()
@@ -49,14 +51,14 @@ export default class login extends Component {
         return (
             <div className="login">
                 <nav>登录</nav>
-                <span className="reg">注册</span>
+                <NavLink to={"/register"}><span className="reg">注册</span></NavLink>
                 <div className="form">
                     <div className="inp">
                         账号：<input type="text" value={user.phone} onChange={(e) => this.changeUser(e, "phone")} />
                     </div>
                     <hr />
                     <div className="inp">
-                        密码：<input type="text" value={user.password} onChange={(e) => this.changeUser(e, "password")} />
+                        密码：<input type="password" value={user.password} onChange={(e) => this.changeUser(e, "password")} />
                     </div>
                     <hr />
                     <div className="inp pass">

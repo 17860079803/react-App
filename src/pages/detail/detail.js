@@ -53,10 +53,12 @@ export default class detail extends Component {
         const uid = sessionStorage.getItem('isLogin')
         let obj = {
             uid,
-            goodsid: this.state.detail.goodsid,
+            goodsid: this.state.detail.id,
             num: 1
         }
+        console.log(obj);
         reqCartadd(obj).then(res => {
+            console.log(res);
             successAlert("添加成功")
             this.setState({
                 isShow:false

@@ -18,7 +18,7 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(res => {
     if (res.data.msg === "登录已过期或访问权限受限") {
         successAlert("登录已过期或访问权限受限")
-        this.props.history.push('/login')
+        // this.props.history.push('/login')
         return;
     }
     return res
@@ -78,7 +78,7 @@ export const reqCatetree = (params) => {
         url: "/api/getcatetree",
         method: "get",
         params
-    })
+    }) 
 }
 //获取分类商品
 export const reqGetgoods = (params) => {
@@ -86,5 +86,30 @@ export const reqGetgoods = (params) => {
         url: "/api/getgoods",
         method: "get",
         params
+    })
+}
+
+//购物车列表数据请求
+export const reqCartlist = (params) => {
+    return axios({
+        url: "/api/cartlist",
+        method: "get",
+        params
+    })
+}
+//购物车的删除
+export const reqCartdelete = (params) => {
+    return axios({
+        url: "/api/cartdelete",
+        method: "post",
+        data: qs.stringify(params)
+    })
+}
+//购物车的修改
+export const reqCartedit = (params) => {
+    return axios({
+        url: "/api/cartedit",
+        method: "post",
+        data: qs.stringify(params)
     })
 }

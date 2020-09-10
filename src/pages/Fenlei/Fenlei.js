@@ -15,7 +15,6 @@ export default class FenLei extends Component {
     //挂载完成走请求
     componentDidMount() {
         reqCatetree().then(res => {
-            console.log(res);
             this.setState({
                 list: res.data.list,
             })
