@@ -13,7 +13,7 @@ export default class detail extends Component {
     constructor() {
         super()
         this.state = {
-            // 底部规格样式显示与否
+            // 底部规格样式显示与否 
             isShow: false,
             detail: {},
             des: "",
@@ -25,7 +25,6 @@ export default class detail extends Component {
         const id = querystrimg.parse(this.props.location.search.slice(1)).id
         //发起请求获取商品详情
         reqGoodsInfo({ id: id }).then(res => {
-            console.log(res.data.list);
             this.setState({
                 detail: res.data.list[0],
                 des: res.data.list[0].description

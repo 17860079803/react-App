@@ -3,6 +3,7 @@ import "./classGoods.css"
 import Header from "../../components/header/header"
 import { reqGetgoods } from "../../util/request"
 import querystring from "querystring"
+import { NavLink } from "react-router-dom"
 export default class classGoods extends Component {
     constructor() {
         super()
@@ -17,7 +18,6 @@ export default class classGoods extends Component {
             name: info.name
         })
         reqGetgoods({ fid: info.id }).then(res => {
-            console.log(res);
             this.setState({
                 list: res.data.list
             })
@@ -32,18 +32,21 @@ export default class classGoods extends Component {
                 </nav>
                 <ul>
                     {
-                        list.map(item => {
-                            return (
-                                <li key={item.id}>
-                                    <img src={item.img} alt="" />
-                                    <div>
-                                        <p>{item.goodsname}</p>
-                                        <p className="price">{item.price}</p>
-                                        <span>立即抢购</span>
-                                    </div>
-                                </li>
-                            )
-                        })
+                        list.length > 0 ?
+                            (list.map(item => {
+                                return (
+                                    <NavLink to={"/detail?id="+item.id} key={item.id}>
+                                        <li>
+                                            <img src={item.img} alt="" />
+                                            <div>
+                                                <p>{item.goodsname}</p>
+                                                <p className="price">{item.price}</p>
+                                                <span>立即抢购</span>
+                                            </div>
+                                        </li>
+                                    </NavLink>
+                                )
+                            })) : null
                     }
                 </ul>
             </div>

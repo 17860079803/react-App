@@ -18,7 +18,7 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(res => {
     if (res.data.msg === "登录已过期或访问权限受限") {
         successAlert("登录已过期或访问权限受限")
-        // this.props.history.push('/login')
+        window.open("/login","_self")
         return;
     }
     return res

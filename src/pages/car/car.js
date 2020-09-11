@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import "./car.css"
 import house from "../../assets/img/store.png"
-import img from "../../assets/img/1.jpg"
 import nosel from "../../assets/img/radio_nor.png"
 import sel from "../../assets/img/radio_hig.png"
 import edit from "../../assets/img/editor_hig.png"
@@ -21,7 +20,8 @@ export default class car extends Component {
             isAll: false,
             //编辑
             isEditor: false,
-            allNum:0
+            //总价
+            allNum: 0
         }
     }
     //页面渲染完成
@@ -49,6 +49,9 @@ export default class car extends Component {
         }
         reqCartedit(obj).then(res => {
             this.listAdd()
+        })
+        this.setState({
+            isAll:false
         })
     }
     //商品减少
@@ -86,14 +89,15 @@ export default class car extends Component {
     }
     //全选按钮is
     changeAll() {
-        let { carlist,isAll } = this.state
+        let { carlist, isAll } = this.state
         this.setState({
             carlist: carlist.map(item => {
-                item.isCheck = !this.state.isAll;
+                item.isCheck = !isAll;
                 return item
             }),
             isAll: !this.state.isAll
         })
+        
     }
     //点击了编辑
     editClick() {
@@ -102,18 +106,21 @@ export default class car extends Component {
         })
     }
     //点击了删除
-    del(id){
-        reqCartdelete({id:id}).then(res=>{
+    del(id) {
+        reqCartdelete({ id: id }).then(res => {
             successAlert("删除成功")
             this.listAdd()
         })
     }
-    //合计
-    All(){
-
-    }
     render() {
         const { carlist, isAll, isEditor } = this.state
+        //合计
+        var allNum=0;
+        carlist.forEach(item => {
+            if (item.isCheck === true) {
+               allNum += item.price * item.num
+            }
+        })
         return (
             <div className="car">
                 <Header title="购物车" back></Header>
@@ -138,7 +145,6 @@ export default class car extends Component {
                                                 </p>
                                                 <p>总价：￥{item.price * item.num}</p>
                                             </div>
-                                            {/* <span className="price">￥{item.price * item.num}</span> */}
                                             <span className="del" onClick={() => this.del(item.id)}>删除</span>
                                         </div>
                                     </div>
@@ -157,7 +163,7 @@ export default class car extends Component {
                         <img src={isEditor ? edit : noedit} alt="" onClick={() => this.editClick()} />
                         <div>编辑</div>
                     </div>
-                    <div className="all">合计：￥235.00</div>
+                    <div className="all" >合计：￥{allNum}</div>
                     <div className="sum">去结算</div>
                 </div>
             </div>
