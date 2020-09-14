@@ -5,10 +5,15 @@ import nosel from "../../assets/img/radio_nor.png"
 import sel from "../../assets/img/radio_hig.png"
 import edit from "../../assets/img/editor_hig.png"
 import noedit from "../../assets/img/editor_nor.png"
+import cc from "../../assets/img/tab_shopping_nor.png"
+//头部组件
 import Header from "../../components/header/header"
 //引入购物车请求
 import { reqCartlist, reqCartdelete, reqCartedit } from "../../util/request"
+//引入弹框
 import { successAlert } from "../../util/Alert"
+//引入过滤器
+import {filterPrice} from "../../filters/index"
 export default class car extends Component {
     constructor() {
         super();
@@ -21,7 +26,9 @@ export default class car extends Component {
             //编辑
             isEditor: false,
             //总价
-            allNum: 0
+            allNum: 0,
+            //标记是否请求
+            isRequest:false
         }
     }
     //页面渲染完成
@@ -32,11 +39,12 @@ export default class car extends Component {
     listAdd() {
         const uid = sessionStorage.getItem("isLogin")
         reqCartlist({ uid: uid }).then(res => {
-            let list = res.data.list
+            let list = res.data.list?res.data.list:[]
             list.forEach(item => {
                 item.isCheck = false
             })
             this.setState({
+                isRequest:true,
                 carlist: list
             })
         })
@@ -113,7 +121,7 @@ export default class car extends Component {
         })
     }
     render() {
-        const { carlist, isAll, isEditor } = this.state
+        const { carlist, isAll, isEditor,isRequest } = this.state
         //合计
         var allNum=0;
         carlist.forEach(item => {
@@ -143,7 +151,7 @@ export default class car extends Component {
                                                     <span>{item.num}</span>
                                                     <span onClick={() => this.addGoods(item.id)}>+</span>
                                                 </p>
-                                                <p>总价：￥{item.price * item.num}</p>
+                                                <p>总价：￥ {filterPrice(item.price * item.num)}</p>
                                             </div>
                                             <span className="del" onClick={() => this.del(item.id)}>删除</span>
                                         </div>
@@ -152,8 +160,19 @@ export default class car extends Component {
                             )
                         })
                     }
-
                 </ul>
+
+                {/* //温馨提示 */}
+                {
+                    carlist.length === 0&&isRequest ?(
+                        <div className="cover">
+                            <div className="inner"> <img src={cc} alt="" /></div>
+                            <p>购物车比脸都干净<br />还不快去逛逛~</p>
+                        </div>
+                    ):null
+
+                }
+                {/* //底部结算栏 */}
                 <div className="footer">
                     <div className="all">
                         <img src={isAll ? sel : nosel} alt="" onClick={() => this.changeAll()} />
@@ -163,7 +182,7 @@ export default class car extends Component {
                         <img src={isEditor ? edit : noedit} alt="" onClick={() => this.editClick()} />
                         <div>编辑</div>
                     </div>
-                    <div className="all" >合计：￥{allNum}</div>
+                    <div className="all" >合计：￥{filterPrice(allNum)}</div>
                     <div className="sum">去结算</div>
                 </div>
             </div>
